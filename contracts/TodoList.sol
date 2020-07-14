@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.21 <0.7.0;
+pragma solidity >=0.5.0 <0.7.0;
 
 contract TodoList {
-    uint todoCounter = 0;
+    uint public todoCounter;
 
     constructor() public {
         createTask('Learn Python');
@@ -25,11 +25,12 @@ contract TodoList {
         bool complete;
     }
 
+    function getCounter() external view returns(uint) { return todoCounter;}
+
     mapping(uint => Task) public tasks;
 
     function createTask(string memory _content) public {
         todoCounter++;
-
         tasks[todoCounter] = Task(todoCounter, _content, false);
     }
 }
