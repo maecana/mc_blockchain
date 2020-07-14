@@ -1,5 +1,5 @@
 const TodoList = artifacts.require("TodoList");
 
-module.exports = function(deployer) {
-  deployer.deploy(TodoList);
+module.exports = async deployer => {
+  await deployer.deploy(TodoList);
 };
