@@ -1,0 +1,35 @@
+{
+  "name": "mc_blockchain",
+  "version": "1.0.0",
+  "description": "Blockchain Todo List Powered By Ethereum",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && sexit 1"
+  },
+  "author": "mae.cana@outlook.com",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^4.5.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^2.0.2",
+    "lite-server": "^2.5.4",
+    "nodemon": "^1.17.3",
+    "truffle": "5.1.34",
+    "truffle-contract": "3.0.6"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "resolve": "^1.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maecana/mc_blockchain.git"
+  },
+  "keywords": []
+}
