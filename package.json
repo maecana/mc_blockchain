@@ -25,7 +25,8 @@
   "dependencies": {
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
-    "resolve": "^1.17.0"
+    "resolve": "^1.17.0",
+    "web3": "^1.2.9"
   },
   "repository": {
     "type": "git",
