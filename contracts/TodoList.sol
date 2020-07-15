@@ -25,6 +25,12 @@ contract TodoList {
         bool complete;
     }
 
+    event TaskCreated(
+        uint id,
+        string content,
+        bool completed
+    );
+
     function getCounter() external view returns(uint) { return todoCounter;}
 
     mapping(uint => Task) public tasks;
@@ -32,5 +38,7 @@ contract TodoList {
     function createTask(string memory _content) public {
         todoCounter++;
         tasks[todoCounter] = Task(todoCounter, _content, false);
+
+        emit TaskCreated(todoCounter, _content, false);
     }
 }
