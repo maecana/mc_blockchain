@@ -54,8 +54,6 @@ App = {
         App.contracts.TodoList.setProvider(App.web3Provider);
         
         App.todoList = await App.contracts.TodoList.deployed();
-
-        console.log(App.todoList);
     },
 
     render: async () => {
@@ -66,9 +64,7 @@ App = {
         App.setLoading(true);
 
         $('#account').html(App.account);
-
         await App.renderTasks();
-        console.log('rendering');
 
         App.setLoading(false);
 
@@ -77,35 +73,33 @@ App = {
     renderTasks: async () => {
         const taskCounter = await App.todoList.getCounter();
         const $taskTemplate = $('.taskTemplate');
-        console.log(taskCounter);
 
         // start with 1 because 1 is the first valid id in blockchain
-        for(let i = 1; i <= taskCounter; i++) {
+        for(let i = 1; i <= Number(taskCounter); i++) {
             const task = await App.todoList.tasks(i);
             const taskId = task[0].toNumber();
             const taskContent = task[1];
             const taskCompleted = task[2];
-            console.log(task);
             const $newTaskTemplate = $taskTemplate.clone();
             $newTaskTemplate.find('.content').html(taskContent);
             $newTaskTemplate.find('input')
                             .prop('name', taskId)
                             .prop('checked', taskCompleted)
-                            // .on('click', App.toggleCompleted);
-            
+                            .on('click', App.toggleCompleted);
+
             if(taskCompleted) {
                 $("#completedTaskList").append($newTaskTemplate);
             } else {
-                $("#tasklist").append($newTaskTemplate);
+                $("#taskList").append($newTaskTemplate);
             }
 
             $newTaskTemplate.show();
         }
     },
  
-    // toggleCompleted: () => {
-    //     console.log('clicked');
-    // },
+    toggleCompleted: () => {
+        console.log('clicked');
+    },
     
     setLoading: (boolean) => {
         App.loading = boolean;
